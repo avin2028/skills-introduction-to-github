@@ -1,0 +1,390 @@
+/* ===================================================
+   RailBook – IRCTC-like Application Styles
+   =================================================== */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --primary: #003580;
+  --primary-dark: #002060;
+  --primary-light: #1565c0;
+  --accent: #e67e22;
+  --accent-dark: #d35400;
+  --success: #27ae60;
+  --danger: #e74c3c;
+  --warning: #f39c12;
+  --bg: #f4f6f9;
+  --card-bg: #ffffff;
+  --text: #1a1a2e;
+  --text-light: #555;
+  --border: #dee2e6;
+  --shadow: 0 2px 12px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
+  --radius: 8px;
+  --radius-lg: 14px;
+  --transition: 0.2s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+input, select, button { font-family: inherit; font-size: 1rem; }
+ul { list-style: none; }
+
+/* ---------- Utility ---------- */
+.hidden { display: none !important; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.page { display: none; flex: 1; }
+.page.active { display: block; }
+.page-content { padding: 36px 0 60px; }
+.page-title { font-size: 1.7rem; font-weight: 700; color: var(--primary); margin-bottom: 24px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 22px; border-radius: var(--radius); border: 2px solid transparent;
+  font-weight: 600; cursor: pointer; transition: background var(--transition), color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+.btn-outline:hover { background: var(--primary); color: #fff; }
+.btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-accent:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+.btn-search { background: var(--accent); color: #fff; border-color: var(--accent); font-size: 1.05rem; padding: 12px 36px; }
+.btn-search:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+.btn-sm { padding: 6px 14px; font-size: 0.88rem; }
+.btn-full { width: 100%; }
+.btn-danger { background: var(--danger); color: #fff; border-color: var(--danger); }
+.btn-danger:hover { background: #c0392b; border-color: #c0392b; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: var(--primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 60px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.35rem; font-weight: 800; color: #fff; }
+.logo-icon { font-size: 1.6rem; }
+.nav-links { display: flex; gap: 6px; }
+.nav-link {
+  color: rgba(255,255,255,0.82); padding: 8px 14px; border-radius: var(--radius);
+  font-weight: 500; transition: background var(--transition), color var(--transition);
+}
+.nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.18); color: #fff; text-decoration: none; }
+.nav-auth, .nav-user { display: flex; align-items: center; gap: 10px; }
+.nav-auth .btn-outline { color: #fff; border-color: rgba(255,255,255,0.65); }
+.nav-auth .btn-outline:hover { background: rgba(255,255,255,0.18); border-color: #fff; }
+.nav-auth .btn-primary { background: var(--accent); border-color: var(--accent); }
+.nav-auth .btn-primary:hover { background: var(--accent-dark); }
+.user-name { color: #fff; font-weight: 600; }
+.nav-user .btn-outline { color: rgba(255,255,255,0.82); border-color: rgba(255,255,255,0.5); }
+.nav-user .btn-outline:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 60%, #1976d2 100%);
+  color: #fff; text-align: center; padding: 52px 16px 32px;
+}
+.hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
+.hero p { font-size: 1.1rem; opacity: 0.88; }
+
+/* ---------- Search Section ---------- */
+.search-section { background: var(--primary); padding: 0 16px 36px; }
+.search-card {
+  background: var(--card-bg); border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  box-shadow: var(--shadow-lg);
+  max-width: 1100px; margin: 0 auto;
+}
+.search-tabs { display: flex; gap: 4px; margin-bottom: 20px; }
+.tab-btn {
+  padding: 8px 20px; border: none; border-radius: 20px;
+  cursor: pointer; font-weight: 600; background: #f0f2f5; color: var(--text-light);
+  transition: background var(--transition), color var(--transition);
+}
+.tab-btn.active { background: var(--primary); color: #fff; }
+.search-fields {
+  display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap;
+}
+.field-group { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 150px; }
+.field-group label { font-size: 0.8rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: .04em; }
+.field-group input, .field-group select {
+  border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 12px;
+  font-size: 0.97rem; transition: border-color var(--transition);
+  background: #fff;
+}
+.field-group input:focus, .field-group select:focus { outline: none; border-color: var(--primary); }
+.swap-btn {
+  width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--primary);
+  background: #fff; color: var(--primary); font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px;
+  transition: background var(--transition), color var(--transition);
+}
+.swap-btn:hover { background: var(--primary); color: #fff; }
+
+/* ---------- Results Section ---------- */
+.results-section { padding: 28px 16px 60px; }
+.results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+.results-header h2 { font-size: 1.3rem; color: var(--primary); font-weight: 700; }
+.sort-bar { display: flex; align-items: center; gap: 8px; }
+.sort-bar span { font-size: 0.85rem; color: var(--text-light); }
+.sort-btn {
+  padding: 5px 14px; border: 1.5px solid var(--border); border-radius: 20px;
+  background: #fff; cursor: pointer; font-size: 0.85rem; color: var(--text-light);
+  transition: all var(--transition);
+}
+.sort-btn.active, .sort-btn:hover { border-color: var(--primary); color: var(--primary); background: #eef2ff; }
+
+/* ---------- Train Card ---------- */
+.train-card {
+  background: var(--card-bg); border-radius: var(--radius-lg); margin-bottom: 14px;
+  box-shadow: var(--shadow); overflow: hidden;
+  border: 1.5px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+.train-card:hover { box-shadow: var(--shadow-lg); }
+.train-card-main {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px; gap: 16px; flex-wrap: wrap;
+}
+.train-name-info { min-width: 160px; }
+.train-number { font-size: 0.78rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.train-name { font-size: 1.07rem; font-weight: 700; color: var(--text); margin-top: 2px; }
+.train-type-badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px;
+  border-radius: 20px; margin-top: 4px;
+}
+.badge-express { background: #fff3cd; color: #856404; }
+.badge-superfast { background: #d1ecf1; color: #0c5460; }
+.badge-rajdhani { background: #f8d7da; color: #721c24; }
+.badge-shatabdi { background: #d4edda; color: #155724; }
+.badge-intercity { background: #e2e3e5; color: #383d41; }
+
+.train-timing { display: flex; align-items: center; gap: 14px; }
+.time-block { text-align: center; }
+.dep-time, .arr-time { font-size: 1.45rem; font-weight: 800; color: var(--text); }
+.station-code { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
+.duration-block { text-align: center; }
+.duration-line { display: flex; align-items: center; gap: 4px; }
+.dur-line { flex: 1; height: 2px; background: var(--border); }
+.dur-icon { font-size: 1rem; }
+.duration-text { font-size: 0.8rem; color: var(--text-light); margin-top: 3px; text-align: center; }
+
+.class-availability { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.class-chip {
+  border: 1.5px solid var(--border); border-radius: var(--radius);
+  padding: 6px 12px; text-align: center; cursor: pointer; min-width: 72px;
+  transition: all var(--transition);
+}
+.class-chip:hover, .class-chip.selected { border-color: var(--primary); background: #eef2ff; }
+.class-chip .class-code { font-size: 0.78rem; font-weight: 700; color: var(--primary); }
+.class-chip .class-seats { font-size: 0.72rem; color: var(--success); margin-top: 2px; }
+.class-chip .class-seats.waitlist { color: var(--warning); }
+.class-chip .class-seats.not-available { color: var(--danger); }
+.class-chip .class-fare { font-size: 0.82rem; font-weight: 700; color: var(--text); margin-top: 1px; }
+
+.book-action { text-align: right; min-width: 110px; }
+.book-btn { background: var(--primary); color: #fff; border: none; border-radius: var(--radius); padding: 11px 22px; font-weight: 700; cursor: pointer; font-size: 0.97rem; transition: background var(--transition); }
+.book-btn:hover { background: var(--primary-dark); }
+.book-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+.train-card-footer {
+  background: #f8f9fb; border-top: 1px solid var(--border);
+  padding: 8px 22px; display: flex; align-items: center; gap: 16px;
+  font-size: 0.82rem; color: var(--text-light); flex-wrap: wrap;
+}
+.runs-on { display: flex; gap: 5px; }
+.day-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; background: #e9ecef; color: #888;
+}
+.day-dot.runs { background: var(--primary); color: #fff; }
+
+/* ---------- No Results ---------- */
+.no-results { text-align: center; padding: 48px 16px; color: var(--text-light); }
+.no-results .icon { font-size: 3rem; margin-bottom: 12px; }
+.no-results h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+
+/* ---------- Booking Modal ---------- */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 200; display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.modal {
+  background: #fff; border-radius: var(--radius-lg); width: 100%; max-width: 520px;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+.modal-lg { max-width: 720px; }
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px 14px; border-bottom: 1px solid var(--border);
+}
+.modal-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+.success-header { background: var(--success); }
+.success-header h3 { color: #fff; }
+.modal-close {
+  background: none; border: none; font-size: 1.2rem; cursor: pointer;
+  color: var(--text-light); padding: 4px 8px; border-radius: 4px;
+}
+.modal-close:hover { background: #f0f0f0; }
+.modal-body { padding: 20px 22px 24px; }
+
+.train-summary {
+  background: #eef2ff; border-radius: var(--radius); padding: 12px 16px;
+  margin-bottom: 20px; font-size: 0.93rem;
+}
+.train-summary strong { color: var(--primary); }
+
+/* ---------- Passenger Row ---------- */
+.passenger-row {
+  background: #f8f9fb; border-radius: var(--radius); padding: 14px 16px;
+  margin-bottom: 12px; position: relative; border: 1.5px solid var(--border);
+}
+.passenger-row-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.passenger-row-title { font-weight: 700; font-size: 0.9rem; color: var(--primary); }
+.remove-passenger {
+  background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1.1rem;
+}
+.passenger-fields { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 10px; }
+@media (max-width: 560px) { .passenger-fields { grid-template-columns: 1fr 1fr; } }
+
+.add-passenger-row { display: flex; align-items: center; gap: 12px; margin: 4px 0 16px; }
+.passenger-limit { font-size: 0.8rem; color: var(--text-light); }
+
+.contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+@media (max-width: 480px) { .contact-row { grid-template-columns: 1fr; } }
+
+/* ---------- Fare Summary ---------- */
+.fare-summary {
+  background: #fffbf0; border: 1.5px solid #f0d09e; border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 18px;
+}
+.fare-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.92rem; }
+.fare-total { border-top: 1.5px solid #e0c080; padding-top: 8px; margin-top: 4px; font-weight: 700; font-size: 1.05rem; }
+.booking-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* ---------- Payment Modal ---------- */
+.payment-amount {
+  background: #eef2ff; border-radius: var(--radius); padding: 16px; text-align: center;
+  font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 20px;
+}
+.payment-methods { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.payment-option {
+  display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+  border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer;
+  font-weight: 500; transition: border-color var(--transition);
+}
+.payment-option:hover { border-color: var(--primary); }
+.upi-field { margin-bottom: 18px; }
+.payment-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* ---------- Confirmation Modal ---------- */
+.confirmation-ticket {
+  border: 2px dashed var(--success); border-radius: var(--radius-lg);
+  padding: 20px 22px; margin-bottom: 16px; position: relative; overflow: hidden;
+}
+.confirmation-ticket::before {
+  content: ''; position: absolute; top: -20px; left: -20px;
+  width: 50px; height: 50px; background: var(--bg); border-radius: 50%;
+}
+.confirmation-ticket::after {
+  content: ''; position: absolute; top: -20px; right: -20px;
+  width: 50px; height: 50px; background: var(--bg); border-radius: 50%;
+}
+.pnr-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; margin-bottom: 4px; }
+.pnr-label { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 16px; }
+.ticket-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
+.ticket-detail { }
+.td-label { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: .04em; }
+.td-value { font-weight: 600; font-size: 0.95rem; margin-top: 2px; }
+.confirm-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* ---------- My Bookings ---------- */
+.booking-item {
+  background: #fff; border-radius: var(--radius-lg); margin-bottom: 16px;
+  box-shadow: var(--shadow); border: 1.5px solid var(--border); overflow: hidden;
+}
+.booking-item-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px; background: #f8f9fb; border-bottom: 1px solid var(--border);
+  flex-wrap: wrap; gap: 8px;
+}
+.booking-pnr { font-weight: 800; font-size: 1.05rem; color: var(--primary); }
+.booking-status-badge {
+  padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+}
+.status-confirmed { background: #d4edda; color: #155724; }
+.status-cancelled { background: #f8d7da; color: #721c24; }
+.booking-item-body { padding: 14px 20px; }
+.booking-route { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+.booking-meta { font-size: 0.87rem; color: var(--text-light); margin-bottom: 10px; }
+.booking-passengers { margin-bottom: 10px; }
+.booking-passenger-tag {
+  display: inline-block; background: #eef2ff; color: var(--primary);
+  border-radius: 20px; padding: 3px 10px; font-size: 0.8rem; margin: 3px 3px 3px 0;
+}
+.booking-item-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 20px; border-top: 1px solid var(--border);
+}
+.booking-fare { font-weight: 700; color: var(--text); }
+.no-bookings { text-align: center; padding: 60px 16px; color: var(--text-light); }
+.no-bookings .icon { font-size: 3rem; margin-bottom: 14px; }
+
+/* ---------- PNR ---------- */
+.pnr-card {
+  background: #fff; border-radius: var(--radius-lg); padding: 28px;
+  box-shadow: var(--shadow); max-width: 480px; margin-bottom: 24px;
+  display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap;
+}
+.pnr-card .field-group { flex: 1; min-width: 200px; }
+#pnr-result {
+  background: #fff; border-radius: var(--radius-lg); padding: 24px;
+  box-shadow: var(--shadow); max-width: 600px;
+}
+
+/* ---------- Login / Register ---------- */
+.modal-body form { display: flex; flex-direction: column; gap: 14px; }
+.error-msg { color: var(--danger); font-size: 0.88rem; padding: 8px 12px; background: #fdf3f3; border-radius: var(--radius); }
+.modal-footer-text { text-align: center; font-size: 0.9rem; color: var(--text-light); margin-top: 14px; }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed; bottom: 28px; right: 28px;
+  background: #1a1a2e; color: #fff;
+  padding: 12px 22px; border-radius: var(--radius); font-size: 0.95rem;
+  z-index: 999; box-shadow: var(--shadow-lg);
+  animation: slide-in 0.3s ease;
+}
+.toast.toast-success { background: var(--success); }
+.toast.toast-error { background: var(--danger); }
+@keyframes slide-in { from { transform: translateX(60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--primary); color: rgba(255,255,255,0.75);
+  text-align: center; padding: 18px 16px; margin-top: auto;
+  font-size: 0.88rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .navbar { padding: 0 12px; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 1.6rem; }
+  .search-card { padding: 18px 14px 16px; }
+  .search-fields { flex-direction: column; }
+  .swap-btn { align-self: center; }
+  .train-card-main { flex-direction: column; align-items: flex-start; }
+  .book-action { width: 100%; text-align: left; }
+  .ticket-detail-grid { grid-template-columns: 1fr; }
+}
